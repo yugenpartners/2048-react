@@ -10,6 +10,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  color: rgba(255,255,255, 0) !important;
+}
+.cell:hover{
+  color: rgba(255,255,255, 0.3) !important;
 }
 
 .cell:last-child {
