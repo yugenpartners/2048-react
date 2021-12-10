@@ -2,6 +2,7 @@ import React from 'react'
 import Cells from './Cells'
 import game from './Game'
 import './App.css'
+import TextBox from './TextBox'
 
 interface AppProps {}
 
@@ -54,30 +55,35 @@ export default class App extends React.Component<AppProps, AppState> {
     game.removeCallback('won')
     game.removeCallback('addScore')
   }
-
+  
+  textContent = [
+    {
+      title: "Make Your Own",
+      paragraphs: [
+        "Familiar Faces will offer automated game creation in the future, but for now, all of these games are hand-made!",
+        "In order to create a game for your group of family or friends, we’ll need pictures of each member of the family and (optionally) an order for them to appear in game.",
+        "You can send these pictures to requests@familiarfaces.app, and we’ll send you back a link to your game! Most requests are processed in 1-3 business days."
+      ]
+    },
+    {
+      title: "About",
+      paragraphs: [
+        "Familiar Faces is a game that brings family and friends to the forefront of fun. By reinventing old classics using pictures and information about loved ones, we hope to make the holiday season more exciting than ever.",
+        "If you have any ideas for new directions to go with this project, please send them to requests@familiarfaces.app, and we’ll be in touch!"
+      ]
+    }
+  ];
+  
   render () {
     return (
       <div className="app">
-        <div className="game-header">
-          <h1 className="title">
-            2048
-          </h1>
-          <div className="score-container">
-            {this.state.score}
 
-            {
-              this.state.addition !== 0 && <div className="score-addition">
-                +{this.state.addition}
-              </div>
-            }
-          </div>
-        </div>
-
-        <div className="game-intro">
-          <button className="restart-button" onClick={this.restart}>New Game</button>
+        {/* <div className="game-intro">
           <h2 className="subtitle">Play 2048 Game</h2>
           Join the numbers and get to the <b>2048 tile!</b>
-        </div>
+        </div> */}
+
+        {/* <TextBox content={this.textContent[1]} /> */}
 
         <div className="game-container">
           {
@@ -94,11 +100,6 @@ export default class App extends React.Component<AppProps, AppState> {
           }
           <Cells cells={this.state.cells} />
         </div>
-
-        <p className="game-explanation">
-          <b className="important">How to play: </b>
-          Use your <b>arrow keys</b> to move the tiles. When two tiles with the same number touch, they <b>merge into one!</b>
-        </p>
       </div>
     )
   }
